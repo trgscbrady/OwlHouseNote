@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+
+<head runat="server" id="pageHead">
+    <title>Owl House Note using Bootstrap via PhoneGap</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css' integrity='sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ' crossorigin='anonymous' />
+    <link rel="stylesheet" href="css/OwlHouseNote.css" />
+</head>
+
+<body>
+    <!-- START OF THE WEB PAGE CONTENT -->
+    <div class="container">
+        <!-- IE 11 has a problem where it blanks images that have backface removal switched on during any type of animation.
+             In effect, the note images will go blank during the rotation animation of the note. MS have fixed this in Edge
+             but have no intention of fixing it in IE11. If that browser is detected suggest that the user should upgrade -->
+
+        <div id="IE11Warning" class="IE11WarningHide">
+            Please note that for best viewing of this page we recommend you upgrade your browser to a newer, fully supported version - for example
+            <a href="https://www.opera.com" target="_blank">Opera</a>,
+            <a href="https://www.chrome.com" target="_blank">Chrome</a>,
+            <a href="https://www.firefox.com" target="_blank">Firefox</a>, or <a href="https://www.microsoft.com/en-gb/windows/microsoft-edge" target="_blank">Microsoft Edge</a>
+        </div>
+
+        <!-- Title of the page -->
+        <h1 class="text-center pageTitle">Proven Polymer Integration</h1>
+
+        <!-- Create the container for the rotating note -->
+        <div class="row text-center">
+            <div class="col-sm-12">
+                <div id="clickToRotate">
+                    <div class="rotatingNoteContainer">
+                        <div id="imgBack" class="back"><img src="images/OwlHouseNote/owl-back.png" alt="-" /></div>
+                        <div id="imgFront" class="front"><img src="images/OwlHouseNote/owl-front.png" alt="-" /></div>
+                    </div>
+                    <img src="images/OwlHouseNote/Rotate-icon.png" id="imgRotate" alt="" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Introduce the design itself -->
+        <div class="row text-center">
+            <div class="col-sm-12">
+                <h2 class="text-centre introductionTitle">Features of Note</h2>
+                <div class="text-justify introductionBody">
+                    The 2016 housenote showcases Depth Image hologram on Safeguard. The design depicts a barn owl (Tyto alba) which is one of the most widely distributed of all birds and uses shape, Advanced Image plan holography and the polymer characteristics to create
+                    a stunning design with high impact.
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Title, rotating note and description container -->
+
+    <!-- Create a new container to hold the alternating left/right feature panels -->
+    <div class="container">
+        <div class="featureSpacer">&nbsp;</div>
+
+        <!-- LOOK (right hand main feature image) -->
+        <div class="row text-center">
+            <div class="col-sm-6">
+                <img class="itemIconImage" src="images/OwlHouseNote/Look-icon.png" alt="Look" />
+                <div class="itemHeader">LOOK</div>
+                <div class="itemSubHeader">Depth&trade; Image Hologram</div>
+                <p class="text-justify">Foil strip incorporating Depth Image holograms, with striking colour change, movement and depth.</p>
+            </div>
+            <div class="col-sm-6">
+                <img class="imgFeature" src="images/OwlHouseNote/Owl-Housenote-(April-2016)-Hologram-Context-View-H.jpg" alt="Look" />
+            </div>
+        </div>
+
+        <div class="featureSpacer">&nbsp;</div>
+
+        <!-- LOOK (left hand main feature image - and which uses a crossfade between two images) -->
+        <div class="row text-center">
+            <div class="col-sm-6 push-sm-6">
+                <!-- In normal wide mode, push this to the right. In SM mode this will then revert to being displayed on the top -->
+                <img class="itemIconImage" src="images/OwlHouseNote/Look-icon.png" alt="Look" />
+                <div class="itemHeader">LOOK</div>
+                <div class="itemSubHeader">Safeguard Mask&trade;</div>
+                <p class="text-justify">Safeguard MASK is a unique security feature integrated into the substrate. A geometric pattern is visible in normal view, revealing a hidden image when held up to the light.</p>
+            </div>
+            <div class="col-sm-6 pull-sm-6">
+                <!-- In normal wide mode, pull this to the left. In SM mode this will then revert to being displayed on the bottom -->
+                <div class="imgFeatureWith2ImageCrossfade">
+                    <div class="bottom"><img src="images/OwlHouseNote/mask.jpg" alt="Look" /></div>
+                    <div class="top"><img src="images/OwlHouseNote/mask-off.jpg" alt="Look" /></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="featureSpacer">&nbsp;</div>
+
+        <!-- FEEL (right hand main feature image - and which uses a crossfade between two images) -->
+        <div class="row text-center">
+            <div class="col-sm-6">
+                <img class="itemIconImage" src="images/OwlHouseNote/Feel-icon.png" alt="Feel" />
+                <div class="itemHeader">FEEL</div>
+                <div class="itemSubHeader">Tactile Emboss</div>
+                <p class="text-justify">A highly tactile embossed feature to aid the visually impaired in identifying the denomination of the banknote.</p>
+            </div>
+            <div class="col-sm-6">
+                <img class="imgFeature" src="images/OwlHouseNote/Owl-Housenote-(April-2016)-Tactile-Emboss-detail-B.jpg" alt="Feel" />
+            </div>
+        </div>
+
+        <div class="featureSpacer">&nbsp;</div>
+
+        <!-- LOOK (left hand main feature image - and which uses a crossfade between two images) -->
+        <div class="row text-center">
+            <div class="col-sm-6 push-sm-6">
+                <!-- In normal wide mode, push this to the right. In SM mode this will then revert to being displayed on the top -->
+                <img class="itemIconImage" src="images/OwlHouseNote/Tilt-icon.png" alt="Tilt" />
+                <div class="itemHeader">TILT</div>
+                <div class="itemSubHeader">Spectrum&trade;</div>
+                <p class="text-justify">A simple yet effective public recognition feature based on litho and intaglio printing techniques. When viewed normally the design appears as a uniform colour but when tilted a different pattern of multiple colours can easily be seen.</p>
+            </div>
+            <div class="col-sm-6 pull-sm-6">
+                <!-- In normal wide mode, pull this to the left. In SM mode this will then revert to being displayed on the bottom -->
+                <img class="imgFeature" src="images/OwlHouseNote/Owl-Housenote-(April-2016)-Spectrum-detail-A.jpg" alt="Tilt" />
+            </div>
+        </div>
+
+        <div class="featureSpacer">&nbsp;</div>
+
+        <!-- TILT (right hand main feature image - and which uses a crossfade between two images) -->
+        <div class="row text-center">
+            <div class="col-sm-6">
+                <img class="itemIconImage" src="images/OwlHouseNote/Feel-icon.png" alt="Tilt" />
+                <div class="itemHeader">TILT</div>
+                <div class="itemSubHeader">Colour Effects</div>
+                <p class="text-justify">A range of novel colour effects has been developed using clever combinations of colour changing, pearlescent and iridescent inks. These can be used to create attractive designs while making the counterfeiterrs' job harder.</p>
+            </div>
+            <div class="col-sm-6">
+                <img class="imgFeature" src="images/OwlHouseNote/Owl-Housenote-(April-2016)-iridescence-detail-A.jpg" alt="Tilt" />
+            </div>
+        </div>
+
+        <div class="featureSpacer">&nbsp;</div>
+
+        <!-- LOOK (left hand main feature image - and which uses a crossfade between two images) -->
+        <div class="row text-center">
+            <div class="col-sm-6 push-sm-6">
+                <!-- In normal wide mode, push this to the right. In SM mode this will then revert to being displayed on the top -->
+                <img class="itemIconImage" src="images/OwlHouseNote/Check-icon.png" alt="Check" />
+                <div class="itemHeader">CHECK</div>
+                <div class="itemSubHeader">Gemini&trade;</div>
+                <p class="text-justify">A proven effect where one visble colour changes to two colours under ultra-violet light.</p>
+            </div>
+            <div class="col-sm-6 pull-sm-6">
+                <!-- In normal wide mode, pull this to the left. In SM mode this will then revert to being displayed on the bottom -->
+                <img class="imgFeature" src="images/OwlHouseNote/Owl-Housenote-(April-2016)-Gemini-print-UV.jpg" alt="Check" />
+            </div>
+        </div>
+
+        <div class="featureSpacer">&nbsp;</div>
+    </div>
+    <!-- Feature container -->
+    <!-- END OF THE WEB PAGE CONTENT -->
+    <p>&nbsp;</p>
+
+
+
+    <!-- Load the cordova script first. -->
+    <script type="text/javascript" src="cordova.js22"></script>
+
+    <!-- Bootstrap requires Tether when items such as tooltips are used. Load that next -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.1/js/tether.min.js" type="text/javascript"></script>
+    <!-- Next the jQuery library and optionally a migration plugin to check older JQ vers 1 code running under vers 3 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+    <!-- Bootstrap version 4 uses vers 3 of JQuery, which has some small differences between it and the older version 1. The following plugin can optionally
+		 be loaded to send error messages to the console in the event that an older JQuery v1 script contravines V3 requirements - in which case it may simply
+		 not work. To see the console in opera, open development tools. <script src="http://code.jquery.com/jquery-migrate-1.4.1.js"></script>  -->
+    <!-- Bootstrap requires popper JS - so load this next -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js" type="text/javascript"></script>
+    <!-- Finally load the JavaScript for BootStrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous" type="text/javascript"></script>
+    <!-- Finally load the specific page support JS file -->
+    <script src="js/OwlHouseNote.js" type="text/javascript"></script>
+
+</html>

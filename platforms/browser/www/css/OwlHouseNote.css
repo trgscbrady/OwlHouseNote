@@ -1,0 +1,376 @@
+﻿/****
+   Copyright (c) TRGS Ltd 2017
+            C.J.Brady 
+                           ****/
+
+
+/* Animations */
+@keyframes cf3FadeInOut {
+  0% {
+      opacity:1;
+    }
+    45% {
+      opacity:1;
+    }
+    55% {
+      opacity:0;
+    }
+    100% {
+      opacity:0;
+    }
+}
+
+/* Animation for safari... */
+@-webkit-keyframes cf3FadeInOut {
+  0% {
+      opacity:1;
+    }
+    45% {
+      opacity:1;
+    }
+    55% {
+      opacity:0;
+    }
+    100% {
+      opacity:0;
+    }
+}
+
+/* When the body first loads, before the CSS kicks in, the user will be likely to see all the elements appear
+   and then reposition. We counter this by leaving the page invisible until after everything loads. At that
+   point we fade the page back in */
+body {
+    opacity: 1;
+    transition: 1s opacity;
+}
+body.fade-out {
+    opacity: 0;
+    transition: none;
+}
+
+.pageTitle {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: normal;
+    color: #B5BD00;
+}
+
+
+/* Set a class for the page introduction title */
+.introductionTitle {
+    padding: 20px 0 20px 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 24px;
+    font-style: bold;
+    font-weight: normal;
+    color: #63605e;
+    width:100%;
+    box-sizing:border-box;
+}
+
+/* Set a class for the page introduction body text */
+.introductionBody {
+    padding: 20px;
+    margin: 0 25px 25px 25px auto;
+    background-color: #f2f5b3;
+    font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+    font-style: normal;
+    font-weight: normal;
+    color: #63605e;
+    width:100%;
+    box-sizing:border-box;
+}
+
+.IE11WarningHide {
+    display:none;
+    visibility:hidden;
+}
+
+.IE11WarningShow {
+    padding: 20px;
+    margin: 0 25px 25px 25px auto;
+    text-align:left;
+    background-color: #f2f5b3;
+    font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+    font-style: normal;
+    font-weight: normal;
+    color: #63605e;
+    width:100%;
+    box-sizing:border-box;
+
+}
+
+/* unvisited link */
+#IE11Warning a:link {
+    font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+    font-style: normal;
+    font-weight: normal;
+    color: #63605e;
+    text-decoration:none;
+}
+
+/* visited link */
+#IE11Warning a:visited {
+}
+
+/* mouse over link */
+#IE11Warning a:hover {
+    text-decoration:underline;
+}
+
+/* selected link */
+#IE11Warning a:active {
+}
+
+
+
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
+/* These styles all apply to the rotating note display at the top of the page */
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
+/******************************************************************************/
+
+#imgRotate 
+{
+    cursor:pointer;
+    padding-top: 10px;
+}
+
+/* Careful with one aspect of this container class - you'll notice that its position is relative, the two child divs are
+   positioned absolutely and the height of this container is not set. That means that this container height will collapse 
+   which messes up the page layout. clearFix options didn't work with this arrangement and so I explored using JQ to set
+   the height of this container to whatever the height of either one of the two images is when the page is loaded AND
+   whenever the page is resized. That technique works extremely well for dealing with this problem. See above notes for an
+   example of the JQ functions used. */
+.rotatingNoteContainer {
+    position:relative;
+    width:100%;
+    background-image: url( ../images/OwlHouseNote/background.jpg );
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:100%;
+}
+
+/* Set common attributes for any divs inside the container. Position them all absolutely top left. Clear backface vision so
+   that when the note is turned over, you don't see its reverse image - and then link a transition to any change of the
+   "transform" CSS property. */
+.rotatingNoteContainer div {
+	position:absolute;
+	top:0;
+	left:0;
+
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+    /* Note that JQUERY will remove this transition if IE11 is the detected browser - due to the backface visibility bug  
+       which when enabled, causes any transitions to blank the images until the end of the animation when they reappear.
+       MS have fixed this in EDGE but are not going to fix it in IE11 which is now being sidelined as a browser */
+    -webkit-transition: all 1s linear 0s;
+    -moz-transition: all 1s linear 0s;
+    -ms-transition: all 1s linear 0s;
+    -o-transition: all 1s linear 0s;
+	transition: all 1s linear 0s;
+}
+
+
+/* Starting point class for the front of note image. This is floating within its parent container */
+.front{
+	/* Set a base rotation in Y for the front of the note (in effect making no change) */
+    -webkit-transform: perspective( 2000px ) rotateY( 0deg );
+    -moz-transform: perspective( 2000px ) rotateY( 0deg );
+    -ms-transform: perspective( 2000px ) rotateY( 0deg );
+    -o-transform: perspective( 2000px ) rotateY( 0deg );
+	transform: perspective( 2000px ) rotateY( 0deg );
+	width:100%;
+}
+
+/* Starting point class for the back of note image. NB: This assumes that the back of note img tag will be behind the front
+   of note img tag in terms of its layout within the HTML. Change that and you'll either need to define Z or set backface
+   control. This is floating within its parent container */
+.back{
+	/* Set a base rotation in Y for the back of the note (inverting the image) */
+    -webkit-transform: perspective( 2000px ) rotateY( -180deg );
+    -moz-transform: perspective( 2000px ) rotateY( -180deg );
+    -ms-transform: perspective( 2000px ) rotateY( -180deg );
+    -o-transform: perspective( 2000px ) rotateY( -180deg );
+	transform: perspective( 2000px ) rotateY( -180deg );
+	width:100%;
+}
+
+.front img 
+{
+    width:100%;
+}
+.back img {
+    width:100%;
+}
+
+
+/* Now define four classes that are used to individually animate the front and bank images of the note either
+   when when the front is in view and we're rotating to see the back - or vice versa */
+.rotateFrontImageToShowFrontOfNote 
+{
+    -webkit-transform: perspective( 2000px ) rotateY( 0deg );
+    -moz-transform: perspective( 2000px ) rotateY( 0deg );
+    -ms-transform: perspective( 2000px ) rotateY( 0deg );
+    -o-transform: perspective( 2000px ) rotateY( 0deg );
+	transform: perspective( 2000px ) rotateY( 0deg );
+	width:100%;
+}
+
+.rotateBackImageToShowFrontOfNote {
+    -webkit-transform: perspective( 2000px ) rotateY( -180deg );
+    -moz-transform: perspective( 2000px ) rotateY( -180deg );
+    -ms-transform: perspective( 2000px ) rotateY( -180deg );
+    -o-transform: perspective( 2000px ) rotateY( -180deg );
+	transform: perspective( 2000px ) rotateY( -180deg );
+	width:100%;
+}
+
+
+
+.rotateFrontImageToShowBackOfNote{
+    -webkit-transform: perspective( 2000px ) rotateY( 180deg );
+    -moz-transform: perspective( 2000px ) rotateY( 180deg );
+	-ms-transform: perspective( 2000px ) rotateY( 180deg );
+    -o-transform: perspective( 2000px ) rotateY( 180deg );
+	transform: perspective( 2000px ) rotateY( 180deg );
+	width:100%;
+}
+
+.rotateBackImageToShowBackOfNote{
+    -webkit-transform: perspective( 2000px ) rotateY( 0deg );
+    -moz-transform: perspective( 2000px ) rotateY( 0deg );
+    -ms-transform: perspective( 2000px ) rotateY( 0deg );
+    -o-transform: perspective( 2000px ) rotateY( 0deg );
+	transform: perspective( 2000px ) rotateY( 0deg );
+	width:100%;
+}
+
+
+
+/* These styles control the alternating panels */
+
+.featureSpacer {
+    border-bottom: solid 1px #B5BD00;
+    margin-bottom:20px;
+}
+
+
+
+/* Force all the larger images in the alternating panels to assume 100% width of their container. Bootstrap will do the rest */
+.imgFeature {
+    width:100%;
+    height:auto;
+    border:solid 2px #B5BD00;
+    border-radius:5px;
+    
+}
+
+/* This is the header text for the item panels that sits next to the small icon image for "look", "Check", "Tilt", "Feel"
+   and so needs to sit inline */
+.itemHeader {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: normal;
+    color: #B5BD00;
+    vertical-align:top;
+    display:inline;
+}
+
+/* This is the subheader text for the item panels that sits beneath the small icon and header */
+.itemSubHeader 
+{
+    padding-top:20px;
+    padding-bottom:20px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: normal;
+    color: #B5BD00;
+}
+
+
+/* Base container class for a div that will hold a set of two of the larger feature images on one particular panel where
+   a hover effect is working. This sets the container to used relative positioning. Careful with one aspect of this container
+   class - you'll notice that its position is relative, the two child divs are positions absolutely and the height of this
+   container is not set. That means that this container height will collapse which messes up the page layout. clearFix options
+   didn't work with this arrangement and so I explored using JQ to set the height of this container to whatever the height of
+   either one of the two images is when the page is loaded AND whenever the page is resized. That technique works extremely
+   well for dealing with this problem. The two functions used in JQ were...
+
+   $(window).load(function() {
+       imgHeight = $(".imgFeatureWith2ImageCrossfade img").height();
+       $(".imgFeatureWith2ImageCrossfade").css("height", imgHeight);
+   });
+
+   $(window).resize(function() {
+       var imgHeight = $(".imgFeatureWith2ImageCrossfade img").height();
+       $(".imgFeatureWith2ImageCrossfade").css("height", imgHeight);
+   });  */
+.imgFeatureWith2ImageCrossfade {
+    position:relative;
+    width:100%;
+    margin:0 auto;
+    border:solid 2px #B5BD00;
+    border-radius:5px;
+}
+
+
+/* Used by the child divs inside the class imgFeatureWith2ImageCrossfade - these are both set to absolute and positions top left */
+.imgFeatureWith2ImageCrossfade div {
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+}
+
+/* Set the widths of the images inside the two child containers to use a 100% width. */
+.imgFeatureWith2ImageCrossfade div img {
+    width:100%;
+}
+
+.imgFeatureWith2ImageCrossfade .top 
+{
+    animation-name: cf3FadeInOut;
+    -webkit-animation-name: cf3FadeInOut;
+    -moz-animation-name: cf3FadeInOut;
+    -ms-animation-name: cf3FadeInOut;
+    -o-animation-name: cf3FadeInOut;
+
+    animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+    -ms-animation-timing-function: ease-in-out;
+    -o-animation-timing-function: ease-in-out;
+
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: infinite;
+    -o-animation-iteration-count: infinite;
+
+    animation-duration: 2s;
+    -webkit-animation-duration: 2s;
+    -moz-animation-duration: 2s;
+    -ms-animation-duration: 2s;
+    -o-animation-duration: 2s;
+
+    animation-direction: alternate;
+    -webkit-animation-direction: alternate;
+    -moz-animation-direction: alternate;
+    -ms-animation-direction: alternate;
+    -o-animation-direction: alternate;
+}
